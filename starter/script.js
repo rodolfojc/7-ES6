@@ -76,6 +76,8 @@ console.log(i);
 
 */
 
+/*
+
 /////////////////////////////////////////////////////////////
 // BLOCKS AND IIFEs
 /////////////////////////////////////////////////////////////
@@ -100,8 +102,33 @@ console.log(c);
     
  })();
 
+*/
 
+/////////////////////////////////////////////////////////////
+// STRINGS
+/////////////////////////////////////////////////////////////
 
+let firstName = 'Rodolfo';
+let lastName = 'Carvajal';
+const yearOfBirth = 1987;
+
+function calcAge () {
+    return 2019 - yearOfBirth;
+}
+
+// ES5
+
+console.log('This is '+ firstName + ' ' + lastName + '. He was born in ' + yearOfBirth + '. Today, he is ' + calcAge(yearOfBirth) + ' years old.');
+
+// ES6 - Template Literals
+
+console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today, he is ${calcAge(yearOfBirth)} years old.`);
+
+const n = `${firstName} ${lastName}`;
+console.log(n.startsWith('R'));
+console.log(n.endsWith('l'));
+console.log(n.includes('arv'));
+console.log(`${firstName} `.repeat(5))
 
 
 

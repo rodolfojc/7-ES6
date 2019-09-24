@@ -171,6 +171,7 @@ console.log(ages6);
 // ARROW FUNCTIONS II
 /////////////////////////////////////////////////////////////
 
+/*
 
 // ES5
 
@@ -207,6 +208,9 @@ const box6 = {
     }
     
 };
+
+
+*/
 
 //box6.clickMe();
 
@@ -266,6 +270,62 @@ var friends = ['Juan', 'Carlos', 'Evin', 'Eva'];
 new Person('Mike').myFriends6(friends);
 
 */
+
+/////////////////////////////////////////////////////////////
+// DISTRUCTURING
+/////////////////////////////////////////////////////////////
+
+
+// ES5
+
+var rodolfo = ['John', 23];
+//var name = rodolfo[0];
+//var age = rodolfo[1];
+
+// ES6
+
+const [name, year] = ['Rodolfo', 32];
+console.log(name);
+console.log(year);
+
+const obj = {
+    firstName : 'Rodolfo',
+    lastName : 'Carvajal',
+    
+};
+
+const {firstName, lastName} = obj;
+console.log(firstName);
+console.log(lastName);
+
+const {firstName: a, lastName: b} = obj;
+console.log(a);
+console.log(b);
+
+function calcAgeAndRetirement(year){
+    const age = new Date().getFullYear() - year;
+    return [age, 65 - age];
+};
+
+const [age, retirement] = calcAgeAndRetirement(1987);
+console.log(age);
+console.log(retirement);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

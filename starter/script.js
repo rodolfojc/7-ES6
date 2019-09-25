@@ -484,12 +484,43 @@ isFullAge6(21,2010,1987,1988,1896);
 */
 
 
+/////////////////////////////////////////////////////////////
+// DEFAULT PARAMETERS
+/////////////////////////////////////////////////////////////
 
+// ES5
 
+function CarvajalPerson (firstName, yearOfBirth, lastName, nationality ) {
+    
+    lastName === undefined ? lastName = 'Carvajal' : lastName;
+    nationality === undefined ? nationality = 'Venezuelan' : nationality;
+    
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+    
+}
 
+var rodolfo = new CarvajalPerson('Rodolfo', 1987);
+console.log(rodolfo);
 
+var chriss = new CarvajalPerson('Chriss', 1985, 'Diaz', 'Spanish');
+console.log(chriss);
 
+// ES6
 
+function CarvajalPerson2 (firstName, yearOfBirth, lastName = 'Carvajal', nationality = 'Venezuelan') {
+
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+        
+}
+
+var rodolfo2 = new CarvajalPerson2('Rodolfo', 1987);
+console.log(rodolfo2)
 
 
 

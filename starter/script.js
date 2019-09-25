@@ -271,6 +271,7 @@ new Person('Mike').myFriends6(friends);
 
 */
 
+/*
 /////////////////////////////////////////////////////////////
 // DISTRUCTURING
 /////////////////////////////////////////////////////////////
@@ -312,20 +313,73 @@ console.log(age);
 console.log(retirement);
 
 
+*/
+
+/////////////////////////////////////////////////////////////
+// ARRAYS
+/////////////////////////////////////////////////////////////
+
+const boxes = document.querySelectorAll('.box');
+
+// ES5
+
+var boxesArr5 = Array.prototype.slice.call(boxes);
+
+boxesArr5.forEach(function(current){
+    current.style.backgroundColor = 'dodgerblue';
+});
 
 
+// ES6
+const boxesArr6 = Array.from(boxes);
 
+Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
 
+// ES5 - LOOPS
 
+/*
+for(var i = 0; i < boxesArr5.length; i++){
+    
+    if (boxesArr5[i].className === 'box blue'){
+        continue;
+    }
+    
+    boxesArr5[i].textContent = 'I changed the text';
+    
+}
+*/
 
+// ES6 - FOROF
 
+for (const curr of boxesArr6) {
+    
+    if (curr.className.includes('blue')) {
+        continue;
+    }
+    
+    curr.textContent = 'I changed the text';
+    
+}
 
+// ES5 - FUNCTIONS
 
+var ages = [12,15,11,17,19,14];
 
+var fullAge = ages.map(function(current){
+    return current > 18; 
+});
 
+console.log(fullAge);
 
+console.log(fullAge.indexOf(true));
+console.log(ages[fullAge.indexOf(true)]);
 
+// ES6
 
+// FIND
+
+console.log(ages.findIndex(curr => curr >= 18));
+console.log(ages.find(curr => curr >= 18));
 
 
 

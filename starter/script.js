@@ -385,6 +385,7 @@ console.log(ages.find(curr => curr >= 18));
 
 */
 
+/*
 /////////////////////////////////////////////////////////////
 // SPREAD OPERATOR
 /////////////////////////////////////////////////////////////
@@ -422,6 +423,71 @@ const boxes = document.querySelectorAll('.box');
 const all = [heading,...boxes];
 
 Array.from(all).forEach(cur => cur.style.color = 'purple');
+
+*/
+
+/////////////////////////////////////////////////////////////
+// REST PARAMETERS
+/////////////////////////////////////////////////////////////
+
+/*
+// ES5
+
+function isFullAge5(){
+    //console.log(arguments);
+    var args = Array.prototype.slice.call(arguments);
+    
+    args.forEach(function(curr){
+        console.log((2019 - curr) >= 18);
+    })
+}
+
+// isFullAge5(1999,2010,1987,1988,1896);
+
+// ES6
+
+function isFullAge6(...years){
+    
+    years.forEach(curr => console.log((2019-curr) >= 18));
+    
+}
+
+isFullAge6(1999,2010,1987,1988,1896);
+
+*/
+
+/*
+// ES5
+
+function isFullAge5(limit){
+    //console.log(arguments);
+    var args = Array.prototype.slice.call(arguments, 1);
+    console.log(args);
+    
+    args.forEach(function(curr){
+        console.log((2019 - curr) >= limit);
+    })
+}
+
+// isFullAge5(21, 1999,2010,1987,1988,1896);
+
+// ES6
+
+function isFullAge6(limit,...years){
+    
+    years.forEach(curr => console.log((2019-curr) >= limit));
+    
+}
+
+isFullAge6(21,2010,1987,1988,1896);
+
+*/
+
+
+
+
+
+
 
 
 

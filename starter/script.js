@@ -566,11 +566,13 @@ console.log(question.get(answ === question.get('correct')));
 
 */
 
+/*
 /////////////////////////////////////////////////////////////
 // CLASES
 /////////////////////////////////////////////////////////////
 
 // ES5
+
 
 var Person5 = function(name, yearOfBirth, job) {
     this.name = name;
@@ -597,7 +599,7 @@ class Person6 {
     }
     
     calcAge () {
-        let age = new Date().getFullYear - this.yearOfBirth;
+        let age = new Date().getFullYear() - this.yearOfBirth;
         console.log(age);
     }
     
@@ -612,11 +614,80 @@ const rodolfo6 = new Person6('Rodolfo', 1987, 'Hardware Support');
 Person6.greeting();
 
 
+*/
 
+/////////////////////////////////////////////////////////////
+// CLASES AND SUBCLASES
+/////////////////////////////////////////////////////////////
 
+// ES5
 
+var Person5 = function(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+    
+}
 
+Person5.prototype.calcAge = function(){
+    var age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(age);
+}
 
+var Athlete5 = function(name, yearOfBirth, job, olym, medals){
+    Person5.call(this, name, yearOfBirth, job);
+    this.olym = olym;
+    this.medals = medals;
+}
+
+Athlete5.prototype = Object.create(Person5.prototype);
+
+Athlete5.prototype.wonMedal = function (){
+    this.medals++;
+    console.log(this.medals);
+}
+
+var rodolfoAthle5 = new Athlete5('Rodolfo', 1987, 'Swimmer', 3, 10);
+
+rodolfoAthle5.calcAge();
+rodolfoAthle5.wonMedal();
+
+// ES6
+
+class Person6 {
+    
+    constructor (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+    
+    calcAge () {
+        let age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+        
+}
+
+class Athlete6 extends Person6 {
+    
+    constructor (name, yearOfBirth, job, olym, medals){
+        super(name, yearOfBirth, job);
+        this.olym = olym;
+        this.medals = medals;
+    }
+    
+    wonMedal(){
+        this.medals++;
+        console.log(this.medals);
+    }
+    
+}
+
+const rodolfoAthle6 = new Athlete6('Rodolfo', 1987, 'Swimmer', 3, 10);
+
+rodolfoAthle6.calcAge();
+rodolfoAthle6.wonMedal();
 
 
 

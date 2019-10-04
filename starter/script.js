@@ -566,6 +566,50 @@ console.log(question.get(answ === question.get('correct')));
 
 */
 
+/////////////////////////////////////////////////////////////
+// CLASES
+/////////////////////////////////////////////////////////////
+
+// ES5
+
+var Person5 = function(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+    
+}
+
+Person5.prototype.calcAge = function(){
+    var age = new Date().getFullYear - this.yearOfBirth;
+    console.log(age);
+}
+
+var rodolfo = new Person5('Rodolfo', 1987, 'Hardware Support');
+
+// ES6
+
+class Person6 {
+    
+    constructor (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+    
+    calcAge () {
+        let age = new Date().getFullYear - this.yearOfBirth;
+        console.log(age);
+    }
+    
+    static greeting () {
+        console.log('Hey there');
+    }
+    
+}
+
+const rodolfo6 = new Person6('Rodolfo', 1987, 'Hardware Support');
+
+Person6.greeting();
 
 
 

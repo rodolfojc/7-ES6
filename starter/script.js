@@ -446,6 +446,7 @@ function isFullAge5(){
 
 // ES6
 
+
 function isFullAge6(...years){
     
     years.forEach(curr => console.log((2019-curr) >= 18));
@@ -454,7 +455,7 @@ function isFullAge6(...years){
 
 isFullAge6(1999,2010,1987,1988,1896);
 
-*/
+
 
 /*
 // ES5
@@ -483,7 +484,7 @@ isFullAge6(21,2010,1987,1988,1896);
 
 */
 
-
+/*
 /////////////////////////////////////////////////////////////
 // DEFAULT PARAMETERS
 /////////////////////////////////////////////////////////////
@@ -521,6 +522,72 @@ function CarvajalPerson2 (firstName, yearOfBirth, lastName = 'Carvajal', nationa
 
 var rodolfo2 = new CarvajalPerson2('Rodolfo', 1987);
 console.log(rodolfo2)
+
+*/
+
+/*
+/////////////////////////////////////////////////////////////
+// MAPS
+/////////////////////////////////////////////////////////////
+
+const question = new Map();
+question.set('question', 'What is your official name of the latest major JS version?');
+
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer');
+question.set(false, 'Wrog, try again!');
+
+//console.log(question.get('question'));
+//console.log(question.size);
+
+if(question.has(4)) {
+    //question.delete(4);
+    //console.log('Answer 4 is here');
+}
+
+//question.clear();
+
+//question.forEach((value, key) => console.log(`This is ${key}, and it is set to ${value}`));
+
+for (let [key,value] of question.entries()) {
+    
+    if (typeof(key) === 'number') {
+        console.log(`Answer ${key}:${value}`);
+    }
+}
+
+const answ = parseInt(prompt('Write the answer'));
+
+console.log(question.get(answ === question.get('correct')));
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -616,6 +616,8 @@ Person6.greeting();
 
 */
 
+/*
+
 /////////////////////////////////////////////////////////////
 // CLASES AND SUBCLASES
 /////////////////////////////////////////////////////////////
@@ -688,6 +690,100 @@ const rodolfoAthle6 = new Athlete6('Rodolfo', 1987, 'Swimmer', 3, 10);
 
 rodolfoAthle6.calcAge();
 rodolfoAthle6.wonMedal();
+
+*/
+
+/////////////////////////////////////////////////////////////
+// CODING - CHALLEGE
+/////////////////////////////////////////////////////////////
+
+class Parks {
+    
+    constructor (name, yearOfBuilt, numTrees, area){
+        this.name = name;
+        this.yearOfBuilt = yearOfBuilt;
+        this.numTrees = numTrees;
+        this.area = area;
+                
+    }
+    
+    density () {
+        return this.numTrees/this.area;
+    }
+    
+    age() {
+        return new Date().getFullYear() - this.yearOfBuilt;
+    }
+                    
+}
+
+class Streets {
+    
+    constructor (name, yearOfBuilt, size){
+        
+        this.size === 'undefined' ? size = 'Normal' : this.size;        
+        this.name = name;
+        this.yearOfBuilt = yearOfBuilt;
+    }
+    
+}
+
+
+class Town {
+    
+    constructor(){
+        this.park = new Map(); 
+        this.street = new Map();
+    }
+}
+
+
+let parkOne = new Parks('La mata', 1985, 50, 200);
+let parkTwo = new Parks('El Bethoven', 1900, 500, 300);
+let parkThree = new Parks('La loca', 1945, 700, 500);
+
+let streetOne = new Streets('Ave Bolivar', 1934);
+let streetTwo = new Streets('Ave Santiago', 1987);
+let streetThree = new Streets('Ave Amparo', 1950);
+let streetFour = new Streets('Ave Universidad', 1900);
+
+let myTown = new Town();
+myTown.park.set(1, parkOne);
+myTown.park.set(2, parkTwo);
+myTown.park.set(3, parkThree);
+myTown.street.set(1, streetOne);
+myTown.street.set(2, streetTwo);
+myTown.street.set(3, streetThree);
+myTown.street.set(4, streetFour);
+
+console.log(myTown);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

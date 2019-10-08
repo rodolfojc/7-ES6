@@ -719,9 +719,11 @@ class Parks {
 
 class Streets {
     
-    constructor (name, yearOfBuilt, size){
+    constructor (name, yearOfBuilt, size, lenght){
         
-        this.size === 'undefined' ? size = 'Normal' : this.size;        
+        this.size === 'undefined' ? this.size = 'Normal' : this.size;   
+        this.size = size;
+        this.lenght = lenght;     
         this.name = name;
         this.yearOfBuilt = yearOfBuilt;
     }
@@ -738,30 +740,60 @@ class Town {
 }
 
 
-let parkOne = new Parks('La mata', 1985, 50, 200);
-let parkTwo = new Parks('El Bethoven', 1900, 500, 300);
-let parkThree = new Parks('La loca', 1945, 700, 500);
+let parkOne = new Parks('La mata', 1985, 50, 2);
+let parkTwo = new Parks('El Bethoven', 1900, 500, 3);
+let parkThree = new Parks('La loca', 1945, 1200, 4);
+let parkFour = new Parks('La vuelta de lola', 1950, 800, 7)
 
-let streetOne = new Streets('Ave Bolivar', 1934);
-let streetTwo = new Streets('Ave Santiago', 1987);
-let streetThree = new Streets('Ave Amparo', 1950);
-let streetFour = new Streets('Ave Universidad', 1900);
+let streetOne = new Streets('Ave Bolivar', 1934, 'Big', 7);
+let streetTwo = new Streets('Ave Santiago', 1987, 'Small', 2);
+let streetThree = new Streets('Ave Amparo', 1950, 'Huge', 10);
+let streetFour = new Streets('Ave Universidad', 1900, 'Normal', 5);
 
 let myTown = new Town();
 myTown.park.set(1, parkOne);
 myTown.park.set(2, parkTwo);
 myTown.park.set(3, parkThree);
+myTown.park.set(4, parkFour);
 myTown.street.set(1, streetOne);
 myTown.street.set(2, streetTwo);
 myTown.street.set(3, streetThree);
 myTown.street.set(4, streetFour);
 
-console.log(myTown);
+console.log('<------PARKS REPORT------->');
+myTown.park.forEach(el => {
+    console.log(`Park ${el.name}, does has a density of = ${Math.round(el.density())} trees per square km.`);
+});
 
+let size = myTown.park.size;
+let ave = 0;
 
+myTown.park.forEach(el => {    
+    ave += el.age();        
+});
 
+console.log(`The average of ages of ${size} parks is = ${Math.round(ave/size)} years.`);
 
+myTown.park.forEach(el => {
+    if (el.numTrees > 1000){
+        console.log(`The park with more than 1000 trees is ${el.name}.`);
+    }
+});
 
+console.log('<------STREETS REPORT------->');
+
+let aveStreets = 0;
+let numStreets = myTown.street.size;
+
+myTown.street.forEach(el => {
+    aveStreets += el.lenght;    
+});
+
+console.log(`The total lenght of the ${numStreets} streets is = ${aveStreets} km, with an average of  ${Math.round(aveStreets/numStreets)} km.`);
+
+myTown.street.forEach(el =>{
+    console.log(`The ${el.name}, built in ${el.yearOfBuilt}, is a ${el.size} park.`);
+});
 
 
 

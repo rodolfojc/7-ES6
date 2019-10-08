@@ -693,6 +693,7 @@ rodolfoAthle6.wonMedal();
 
 */
 
+/*
 /////////////////////////////////////////////////////////////
 // CODING - CHALLEGE
 /////////////////////////////////////////////////////////////
@@ -795,18 +796,109 @@ myTown.street.forEach(el =>{
     console.log(`The ${el.name}, built in ${el.yearOfBuilt}, is a ${el.size} park.`);
 });
 
+*/
+
+/////////////////////////////////////////////////////////////
+// CODING - CHALLEGE - LECTURE SOLUTION
+/////////////////////////////////////////////////////////////
+
+class Element {
+    
+    constructor (name, yearOfBuilt) {
+        this.name = name;
+        this.yearOfBuilt = yearOfBuilt;
+    }
+}
+
+class Park extends Element {
+    
+    constructor (name, yearOfBuilt, area, numTrees) {
+        super(name, yearOfBuilt);
+        this.area = area;
+        this.numTrees = numTrees;
+    }
+    
+    treeDensity() {
+        const density = this.numTrees / this.area;
+        console.log(`${this.name} has a tree density of ${density} trees per squeare km.`)
+    }
+    
+}
+
+class Street extends Element {
+    
+    constructor (name, yearOfBuilt, lenght, size = 3) {
+        super(name, yearOfBuilt);
+        this.length = lenght;
+        this.size = size;
+        
+    }
+    
+    classifyStreet() {
+        const clasification = new Map();
+        clasification.set(1, 'tiny');
+        clasification.set(2, 'small');
+        clasification.set(3, 'normal');
+        clasification.set(4, 'big');
+        clasification.set(5, 'huge');
+        console.log(`${this.name}, build in ${this.yearOfBuilt}, is a ${clasification.get(this.size)}`);
+        
+    }
+}
+
+const allParks = [new Park('Green Park', 1987, 0.2, 215),
+                  new Park('National Park', 1984, 2.9, 3541),
+                  new Park('Oak Park', 1953, 0.4, 949)];
+
+const allStreets = [new Street('Ocean Avenue', 1999, 1.1, 4),
+                    new Street('Ever Avenue', 2008, 2.7, 2),
+                    new Street('O\'connel Avenue', 2015, 0.8),
+                    new Street('Sunset Avenue', 1982, 2.5, 5)];
+
+function calc(arr) {
+    
+    const sum = arr.reduce((previus, current, index) => previus + current, 0);
+    
+    return [sum, sum/arr.length];
+    
+}
 
 
+function reportParks (p) {
+    
+    console.log('<----- PARK REPORT ----->');
+    
+    // DENSITY
+    p.forEach(el => el.treeDensity());
+    
+    // AVERAGE AGE
+    const ages = p.map(el => new Date().getFullYear() - el.yearOfBuilt);
+    const [totalAge, AveAge] = calc(ages);
+    console.log(`Our ${p.length} parks have an average of ${AveAge} years.`);
+    
+    // MORE THAT 1000 TREES
+    const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
+    console.log(`${p[i].name} has more than 1000 trees.`)
+    
+}
 
+function reportsStreets (s) {
+    
+    console.log('<----- PARK REPORT ----->');
+    
+    // TOTAL AND AVE LENGTH
+    const [totalLenght, aveLenght] =  calc(s.map(el => el.length));
+    console.log(`Our ${s.length} streets have a total lenght of ${totalLenght}, with an average of ${aveLenght}`);
+    
+    //CLASSIFY SIZES
+    s.forEach(el => el.classifyStreet());
+    
+    
+    
+}
 
-
-
-
-
-
-
-
-
+reportParks(allParks);
+reportsStreets(allStreets);
 
 
 
